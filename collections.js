@@ -19,7 +19,7 @@ _.mixin({
             values = {};
 
         _.each(list, function (value, index) {
-            if (_.isString(value) || _.isNumber(value) || _.isBoolean(value) || _.isNull(value)) {
+            if (!_.isObject(value)) {
                 vstr = '' + value;
                 if(!values.hasOwnProperty(vstr)) {
                     values[vstr] = 0;
