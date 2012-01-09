@@ -15,11 +15,13 @@ _.mixin({
     * @returns {Array} A multidimensional array, with each dimension containing size elements.
     */
     chunks: function (array, size) {
-        var chunks = [],
-            splice = Array.prototype.splice;
+        if (!size) return [];
 
-        while (array.length && size > 0) {
-            chunks.push(splice.call(array, 0, size));
+        var chunks = [],
+            i = 0;
+
+        while (i < array.length) {
+            chunks.push(Array.prototype.slice.call(array, i, i += size));
         }
 
         return chunks;
